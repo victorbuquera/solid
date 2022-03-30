@@ -19,6 +19,7 @@ class MySQLConnection implements DBConnectionInterface{
 class InfoDB {
 
     private $dbConnection;
+    
 
     public function __construct(DBConnectionInterface $dbConnection = null) {
         $defaultConn = new MySQLConnection();
