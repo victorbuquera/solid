@@ -3,24 +3,50 @@ require 'Banco.php';
 
 class InformacoesDB
 {
- /*public function getById($id){
-     $infodb = new \Banco\InfoDB();
-     $infodb = $infodb->getPdo();
+    private $id;
+    private $resultadoCalc;
+    private $retornaCond;
+    public function getId()
+    {
+        return $this->id;
+    }
 
-    $stmt = $infodb->prepare('SELECT * FROM tbinformacoes WHERE id = :id');
-    $stmt->bindParam("id",$id);
-    $stmt->execute();
-    return $stmt->fetch();
- }
-*/
-    public function getById($id){
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getResultadoCalc()
+    {
+        return $this->resultadoCalc;
+    }
+
+    public function setResultadoCalc($resultadoCalc)
+    {
+        $this->resultadoCalc = $resultadoCalc;
+    }
+
+    public function getRetornaCond()
+    {
+        return $this->retornaCond;
+    }
+
+    public function setRetornaCond($retornaCond)
+    {
+        $this->retornaCond = $retornaCond;
+    }
+
+
+
+    public function getById(){
         $infodb = new \Banco\InfoDB();
         $infodb = $infodb->getPdo();
 
         $stmt = $infodb->prepare('SELECT * FROM tbinformacoes');
-        $stmt->bindParam("id",$id);
+        $stmt->bindParam("id",$this->id);
         $stmt->execute();
         return $stmt->fetch();
     }
+
 }
 

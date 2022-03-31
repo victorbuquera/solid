@@ -17,7 +17,6 @@ class MySQLConnection implements DBConnectionInterface{
     }
 }
 class InfoDB {
-
     private $dbConnection;
     
 
