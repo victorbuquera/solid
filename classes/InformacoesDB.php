@@ -43,9 +43,12 @@ class InformacoesDB
         $infodb = $infodb->getPdo();
 
         $stmt = $infodb->prepare('SELECT * FROM tbinformacoes');
-        $stmt->bindParam("id",$this->id);
         $stmt->execute();
-        return $stmt->fetch();
+        while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $this->retornaCond = $linha['id'];
+            
+        }
+    
     }
 
 }

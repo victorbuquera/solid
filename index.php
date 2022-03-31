@@ -54,6 +54,7 @@ require 'classes/CalculaIMC.php';
 
             $imc->Calculo();
            // echo $imc->getResultado();*/
+
             ?>
             <table class="table table-striped">
                 <thead>
