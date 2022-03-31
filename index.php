@@ -1,11 +1,11 @@
 <?php
-require 'classes/InformacoesDB.php'
+require 'classes/InformacoesDB.php';
+require 'classes/CalculaIMC.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
     <meta charset="UTF-8">
     <title>Calculo de IMC</title>
 </head>
@@ -19,54 +19,60 @@ require 'classes/InformacoesDB.php'
         <div class="col-12 col-md-3" style="border: 1px solid rgb(0, 243, 53);">
 
             <form action="" method="POST">
+
                 <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder= "Nome" name="ny">
-              </div>
-
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Sexo</label>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Selecione</option>
-                    <option value="1">M</option>
-                    <option value="2">F</option>
-                  </select>
-              </div>
-
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Idade</label>
-                <input type="number" class="form-control" id="exampleFormControlTextarea1"></input>
-              </div>
-
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Altura</label>
-                <input class="form-control" id="exampleFormControlTextarea1"></input>
-              </div>
+                    <label for="exampleFormControlTextarea1" class="form-label">Nome</label>
+                    <input class="form-control" id="nome" name="nome" >
+                </div>
+                
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Altura</label>
+                    <input class="form-control" id="altura" name="altura" >
+                </div>
 
               <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Peso</label>
-                <input class="form-control" id="exampleFormControlTextarea1" placeholder="000.00"></input>
+                <input class="form-control" id="peso" placeholder="000.00" name="peso"></input>
               </div>
 
               <div class=" d-flex justify-content-center ">
-                <button class="btn btn-success block mb-3 border border-3 rounded-pill" type="submit">Calcular</button>
+                <button class="btn btn-success block mb-3 border border-3 rounded-pill" type="submit" id="calcular">Calcular</button>
               </div>
               </form>
         </div>
-
+        <script>
+            var campos = new FormData();
+            let nome = document.getElementById("nome").value;
+            let altura = document.getElementById("altura").value;
+            campos.append("nome", nome);
+            campos.append("nome", altura);
+            $.ajax({
+                type: "POST",
+                url: "classes/CalculaIMC.php",
+                data: campos,
+                contentType: false,
+                processData: false,
+                success: function(result){
+                    console.log(result);
+                }
+            });
+        </script>
         <div class="col-12 col-md-1">
         </div>
 
         <div class="col-12 col-md-8">
             <?php
-                $informacoesdb = new InformacoesDB();
-                var_dump($informacoesdb->getById(1));
-                var_dump($_POST);
+            /*$informacoesdb = new InformacoesDB();
+            var_dump($informacoesdb->getById(1));
+            var_dump($_POST);
+            $imc = new CalculaIMC();
+
+            $imc->Calculo();
+           // echo $imc->getResultado();*/
             ?>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                      <th scope="col">Nome</th>
                       <th scope="col">Classificação</th>
                       <th scope="col">IMC</th>
                       <th scope="col">O que pode acontecer</th>
@@ -74,12 +80,12 @@ require 'classes/InformacoesDB.php'
                   </thead>
                   <tbody>
                     <tr>
-                      <td><?php echo $calculaImc['nome']?></td>
                       <td>Peso normal</td>
-                      <td>18,5 a 24,9 kg/m2</td>
-                      <td>Menor risco de doenças cardíacas e vasculares</td>
+                      <td></td>
+                      <td></td>
                     </tr>
               </table>
+
         </div>
         
     </div>
@@ -87,8 +93,9 @@ require 'classes/InformacoesDB.php'
 </div>
 
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
+<script src="script/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script></body>
 </html>
 
