@@ -46,16 +46,7 @@ require 'classes/CalculaIMC.php';
         </div>
 
         <div class="col-12 col-md-8">
-            <?php
-            /*$informacoesdb = new InformacoesDB();
-            var_dump($informacoesdb->getById(1));
-            var_dump($_POST);
-            $imc = new CalculaIMC();
-
-            $imc->Calculo();
-           // echo $imc->getResultado();*/
-            ?>
-            <table class="table table-striped">
+            <table class="table table-striped" id="tabela">
                 <thead>
                     <tr>
                       <th scope="col">Classificação</th>

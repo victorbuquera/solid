@@ -36,6 +36,7 @@ class CalculaIMC
 
     public function Calculo(){
         $this->resultado = $this->peso / ($this->altura * $this->altura);
+
     }
 }
 

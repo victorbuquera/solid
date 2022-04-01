@@ -1,5 +1,6 @@
 <?php
 include 'classes/CalculaIMC.php';
+include 'classes/InformacoesDB.php';
 
 if(isset($_POST["peso"]) && isset($_POST["altura"])){
 
@@ -7,9 +8,8 @@ if(isset($_POST["peso"]) && isset($_POST["altura"])){
     $CalculaIMC->setAltura($_POST["altura"]);
     $CalculaIMC->setPeso($_POST["peso"]);
     $CalculaIMC->Calculo();
+    $CalculaIMC->getResultado();
+    echo $CalculaIMC->getResultado();
 
-    //Verificando condicao
-    $VerificaCond = new InformacoesDB();
-    $VerificaCond->setResultadoCalc($CalculaIMC->getResultado());
 
 }
