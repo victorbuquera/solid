@@ -25,7 +25,8 @@ class InfoDB {
         $this->dbConnection = $dbConnection ?? $defaultConn;
         $this->dbConnection = $this->dbConnection->connect();
     }
-    public function getPdo() {
+    public function getPdo(): PDO
+    {
         return $this->dbConnection;
     }
 }
