@@ -1,15 +1,11 @@
 <?php
-include 'classes/CalculaIMC.php';
-include 'classes/InformacoesDB.php';
-
+include 'classes/addUser.php';
 if(isset($_POST["peso"]) && isset($_POST["altura"])){
 
-    $CalculaIMC = new CalculaIMC();
-    $CalculaIMC->setAltura($_POST["altura"]);
-    $CalculaIMC->setPeso($_POST["peso"]);
-    $CalculaIMC->Calculo();
-    $CalculaIMC->getResultado();
-    echo $CalculaIMC->getResultado();
-
-
+    $addUser = new addUser();
+    $addUser->setNome($_POST['nome']);
+    $addUser->setAltura($_POST['altura']);
+    $addUser->setPeso($_POST['peso']);
+    $addUser->setImc($_POST['imc']);
+    echo $addUser->getImc();
 }

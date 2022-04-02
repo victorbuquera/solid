@@ -47,8 +47,7 @@ class InformacoesDB
 
         $stmt->execute();
         while($linha = $stmt->fetch(PDO::FETCH_ASSOC) >= $this->getImc()){
-            $id = $stmt->imc;
-            $id++;
+
         }
     
     }

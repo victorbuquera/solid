@@ -62,5 +62,6 @@ class addUser
         $stmt->bindParam(':altura', $this->altura);
         $stmt->bindParam(':imc', $this->imc);
         $stmt->execute();
+
 }
 }
