@@ -1,5 +1,9 @@
 <?php
-require 'Banco.php';
+
+use Banco\InfoDB;
+
+
+
 
 class InformacoesDB
 {
@@ -12,7 +16,7 @@ class InformacoesDB
         return $this->resultado;
     }
 
-    public function setResultado($resultado): void
+    public function setResultado($resultado)
     {
         $this->resultado = $resultado;
     }
@@ -22,7 +26,7 @@ class InformacoesDB
         return $this->imc;
     }
 
-    public function setImc($imc): void
+    public function setImc($imc)
     {
         $this->imc = $imc;
     }
@@ -38,18 +42,13 @@ class InformacoesDB
         $this->id = $id;
     }
 
-    public function getById(){
-        $infodb = new \Banco\InfoDB();
+    public function getAll(){
+        $infodb = new InfoDB();
         $infodb = $infodb->getPdo();
-
-        $stmt = $infodb->prepare('SELECT imc FROM tbinformacoes');
-
-
+        $sql = "SELECT * FROM tbinformacoes";
+        $stmt = $infodb->prepare($sql);
         $stmt->execute();
-        while($linha = $stmt->fetch(PDO::FETCH_ASSOC) >= $this->getImc()){
-
-        }
-    
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
  }
 

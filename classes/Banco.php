@@ -1,13 +1,20 @@
 <?php
-
-namespace Banco;
+namespace banco;
+use ErrorException;
+use Exception;
 use PDO;
+use PDOException;
+
 interface DBConnectionInterface {
     public function connect();
 }
 
 class MySQLConnection implements DBConnectionInterface{
-    public function connect() {
+    /**
+     * @throws ErrorException
+     */
+    public function connect(): PDO
+    {
         try {
             $pdo = new PDO('mysql:host=localhost; dbname=dbsolid','root','');
             return $pdo;
@@ -18,8 +25,11 @@ class MySQLConnection implements DBConnectionInterface{
 }
 class InfoDB {
     private $dbConnection;
-    
 
+
+    /**
+     * @throws ErrorException
+     */
     public function __construct(DBConnectionInterface $dbConnection = null) {
         $defaultConn = new MySQLConnection();
         $this->dbConnection = $dbConnection ?? $defaultConn;

@@ -50,13 +50,13 @@ require 'classes/CalculaIMC.php';
                 <thead>
                     <tr>
                       <th scope="col">Classificação</th>
-                      <th scope="col">IMC</th>
+                      <th scope="col">Seu IMC</th>
                       <th scope="col">O que pode acontecer</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Peso normal</td>
+                      <td></td>
                       <td></td>
                       <td></td>
                     </tr>

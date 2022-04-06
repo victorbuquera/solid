@@ -1,7 +1,6 @@
 <?php
 
 use Banco\InfoDB;
-
 include 'Banco.php';
 
 class addUser
@@ -55,7 +54,7 @@ class addUser
     public function inserirUsuario(){
         $infodb = new InfoDB();
         $infodb = $infodb->getPdo();
-        $sql = "INSERT INTO tbpessoa(nome, altura, peso, imc) VALUES(:nome,:altura,:peso,:imc)";
+        $sql = "INSERT INTO dbsolid.tbpessoa(nome, altura, peso, imc) VALUES(:nome,:altura,:peso,:imc)";
         $stmt = $infodb->prepare($sql);
         $stmt->bindParam(':nome', $this->nome);
         $stmt->bindParam(':peso', $this->peso);
