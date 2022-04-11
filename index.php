@@ -22,18 +22,18 @@ require 'classes/CalculaIMC.php';
             <form action="" method="POST">
 
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Nome</label>
+                    <label for="nome" class="form-label">Nome</label>
                     <input class="form-control" id="nome" name="nome" >
                 </div>
                 
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Altura</label>
+                    <label for="altura" class="form-label">Altura</label>
                     <input class="form-control" id="altura" name="altura" >
                 </div>
 
               <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Peso</label>
-                <input class="form-control" id="peso" placeholder="000.00" name="peso"></input>
+                <label for="peso" class="form-label">Peso</label>
+                <input class="form-control" id="peso" placeholder="000.00" name="peso"/>
               </div>
 
               <div class=" d-flex justify-content-center ">
@@ -46,7 +46,7 @@ require 'classes/CalculaIMC.php';
         </div>
 
         <div class="col-12 col-md-8">
-            <table class="table table-striped" id="tabela">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                       <th scope="col">Classificação</th>
@@ -55,10 +55,10 @@ require 'classes/CalculaIMC.php';
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr id="tr">
+                      <!--<td></td>
                       <td></td>
-                      <td></td>
-                      <td></td>
+                      <td></td>-->
                     </tr>
               </table>
 

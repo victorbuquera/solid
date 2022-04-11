@@ -1,9 +1,5 @@
 <?php
-namespace banco;
-use ErrorException;
-use Exception;
-use PDO;
-use PDOException;
+
 
 interface DBConnectionInterface {
     public function connect();
@@ -16,8 +12,7 @@ class MySQLConnection implements DBConnectionInterface{
     public function connect(): PDO
     {
         try {
-            $pdo = new PDO('mysql:host=localhost; dbname=dbsolid','root','');
-            return $pdo;
+            return new PDO('mysql:host=localhost; dbname=dbsolid','root','');
         }catch (PDOException|Exception $e){
             throw new ErrorException("Error");
         }

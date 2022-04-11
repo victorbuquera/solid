@@ -1,9 +1,5 @@
 <?php
-
-use Banco\InfoDB;
-
-
-
+require_once 'Banco.php';
 
 class InformacoesDB
 {
@@ -45,7 +41,7 @@ class InformacoesDB
     public function getAll(){
         $infodb = new InfoDB();
         $infodb = $infodb->getPdo();
-        $sql = "SELECT * FROM tbinformacoes";
+        $sql = "SELECT * FROM dbsolid.tbinformacoes, dbsolid.tbpessoa";
         $stmt = $infodb->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
