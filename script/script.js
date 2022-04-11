@@ -1,3 +1,5 @@
+
+
 function SendData(){
 
 var campos = new FormData();
@@ -17,9 +19,10 @@ $.ajax({
     processData: false,
     success: function(result){
         const tr = document.getElementById('tr')
+
         tr.innerHTML =
             `<td>${result.informacoesIMC.classificacao}</td>
-            <td>${result.seuIMC}</td>
+            <td>${result.seuIMC.toFixed(2)}</td>
             <td>${result.informacoesIMC.consequencia}</td>`;
     }
 });
